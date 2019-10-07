@@ -1,16 +1,17 @@
 #pragma once
 
-class point
+
+struct point
 {
-public:
-	point(double x,double y);
-	~point();
-
-	double distance(point first, point second);
-
-	point operator + (point pointPlus);//перегрузка +
-private:
+	char name;
 	double x;
 	double y;
+
+	point(double x,double y, char name);
+	~point();
+	char get_name() {
+		return name;
+	}
+	point operator + (point pointPlus);//перегрузка +
 };
 

@@ -3,20 +3,10 @@
 #include "cmath"
 
 
-point::point(double x, double y)
-{
-	this->x = x;
-	this->y = y;
-}
+point::point(double x, double y, char name) : x(x), y(y), name(name) {}
 
 point::~point()
 {
-}
-
-double point::distance(point first, point second)
-{
-	double dist = sqrt(pow((second.x - first.x), 2) + pow((second.y - first.y), 2));
-	return dist;
 }
 
 
