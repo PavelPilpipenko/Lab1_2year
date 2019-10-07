@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Base.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="pointA.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="triangle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Lab1_2year.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
