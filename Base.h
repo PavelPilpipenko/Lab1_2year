@@ -4,18 +4,15 @@ class Base
 {
 protected:
 	struct point {
-		char name;
 		double x;//координата х
 		double y;// координата y
 	};
 
-	double distTo(point alfa, point beta);
-	void create_point(point p, char p_name);
+	double distTo(point &alfa, point &beta);
+	void create_point(point p);
 public:
-	Base(double x, double y, char name);
+	Base();
 	~Base();
-	
-
 };
 
 //Base operator + (Base pointPlus);//перегрузка +
