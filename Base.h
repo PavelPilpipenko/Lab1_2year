@@ -10,7 +10,7 @@ protected:
 	};
 
 	double distTo(point alfa, point beta);
-	char create_point();
+	void create_point(point p, char p_name);
 public:
 	Base(double x, double y, char name);
 	~Base();

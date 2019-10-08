@@ -1,5 +1,4 @@
 #pragma once
-#include"point.h"
 #include"cmath"
 #include"Base.h"
 
@@ -11,13 +10,9 @@ class figure {
 class triangle : public Base
 {
 private:
-	point a;
-	point b;
-	point c;
-
-	double ab, bc, ac;// !!!
-	
-
+	point _a;
+	point _b;
+	point _c;
 	void _TriangleOrNot();
 public:
 	triangle();
