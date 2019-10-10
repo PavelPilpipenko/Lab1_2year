@@ -8,7 +8,7 @@ protected:
 		double y;// координата y
 	};
 
-	double distTo(point &alfa, point &beta);
+	double distTo(point alfa, point beta);
 	void create_point(point p);
 public:
 	Base();

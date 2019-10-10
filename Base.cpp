@@ -5,7 +5,7 @@
 using std::cin;
 using std::cout;
 
-double Base::distTo(point &alfa, point &beta)
+double Base::distTo(point alfa, point beta)
 {
 	double dist = sqrt(pow((alfa.x - beta.x), 2) + pow((alfa.y - beta.y), 2));
 	return dist;
@@ -14,10 +14,13 @@ double Base::distTo(point &alfa, point &beta)
 
 void Base::create_point(point p)
 {
+	double temp_x, temp_y;
 	cout << "\nEnter X for point: ";
-	cin >> p.x;
+	cin >> temp_x;// нужен сеттер а не в область видимости функции
+	p.x = temp_x;
 	cout << "Enter Y for point: ";
-	cin >> p.y;
+	cin >> temp_y;
+	p.y = temp_y;
 	cout << "Point created";
 }
 
