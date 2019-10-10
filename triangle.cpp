@@ -7,32 +7,30 @@ using std::cin;
 
 void triangle::_TriangleOrNot(double AB, double AC, double BC)
 {
-	if ((AB + BC < AC) && (AB + AC < BC) && (BC + AC < AB)) {
-		cout << "Triangle created";
+	if ((AB + BC > AC) && (AB + AC > BC) && (BC + AC > AB)) {
+		cout << "\nTriangle created";
 	}
 	else {
-		cout << "This is not triangle";
+		cout << "\nThis is not triangle";
 	}
 }
-
 triangle::triangle()
 {
-	double ab = 0, ac = 0, bc = 0;
-	char tr_name;
+	//char tr_name;
 	create_point(_a);
 	create_point(_b);
 	create_point(_c);
 
 	ab = distTo(_a, _b);
-	cout << "AB = " << ab;
+	cout << "\nAB = " << ab;
 	bc = distTo(_b, _c);
-	cout << "BC = " << bc;
+	cout << "\nBC = " << bc;
 	ac = distTo(_a, _c);
-	cout << "AC = " << ac;
+	cout << "\nAC = " << ac;
 	_TriangleOrNot(ab, ac, bc);
 
-	cout << "Enter name for triangle: ";
-	cin >> tr_name;
+	//cout << "Enter name for triangle: ";
+	//cin >> tr_name;
 }
 
 triangle::~triangle()

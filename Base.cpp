@@ -12,15 +12,15 @@ double Base::distTo(point alfa, point beta)
 }
 
 
-void Base::create_point(point p)
+void Base::create_point(point &p)
 {
-	double temp_x, temp_y;
+	point temp;
 	cout << "\nEnter X for point: ";
-	cin >> temp_x;// нужен сеттер а не в область видимости функции
-	p.x = temp_x;
+	cin >> temp.x;// нужен сеттер а не в область видимости функции
+	p.x = temp.x;
 	cout << "Enter Y for point: ";
-	cin >> temp_y;
-	p.y = temp_y;
+	cin >> temp.y;
+	p.y = temp.y;
 	cout << "Point created";
 }
 

@@ -10,6 +10,8 @@ private:
 	point _c;
 	void _TriangleOrNot(double AB, double AC, double BC);
 public:
+	double ab = 0, ac = 0, bc = 0;
+
 	triangle();
 	~triangle();
 };

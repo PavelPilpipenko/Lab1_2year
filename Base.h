@@ -9,7 +9,7 @@ protected:
 	};
 
 	double distTo(point alfa, point beta);
-	void create_point(point p);
+	void create_point(point &p);
 public:
 	Base();
 	~Base();
