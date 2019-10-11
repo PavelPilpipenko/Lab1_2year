@@ -7,7 +7,8 @@ protected:
 		double x;//координата х
 		double y;// координата y
 	};
-
+	double perimetr(double distAB, double distAC, double distBC);
+	double area(double distAB, double distAC, double distBC);
 	double distTo(point alfa, point beta);
 	void create_point(point &p);
 public:

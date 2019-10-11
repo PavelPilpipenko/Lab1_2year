@@ -5,6 +5,19 @@
 using std::cin;
 using std::cout;
 
+double Base::perimetr(double distAB, double distAC, double distBC)
+{
+	double perimetr_tr = distAB + distAC + distBC;
+	return perimetr_tr;
+}
+
+double Base::area(double distAB, double distAC, double distBC)
+{
+	double half_perimetr = (distAB + distAC + distBC) / 2;
+	double area_tr = sqrt(half_perimetr * (half_perimetr - distAB) * (half_perimetr - distAC) * (half_perimetr - distBC));
+	return area_tr;
+}
+
 double Base::distTo(point alfa, point beta)
 {
 	double dist = sqrt(pow((alfa.x - beta.x), 2) + pow((alfa.y - beta.y), 2));

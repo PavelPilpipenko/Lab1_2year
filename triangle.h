@@ -8,10 +8,11 @@ private:
 	point _a;
 	point _b;
 	point _c;
-	void _TriangleOrNot(double AB, double AC, double BC);
+	double _ab = 0, _ac = 0, _bc = 0, _P = 0, _S = 0;
+	bool _TrOrNot;
+	bool _TriangleOrNot(double distAB, double distAC, double distBC);
+	void check(double distAB, double distAC, double distBC, double area);
 public:
-	double ab = 0, ac = 0, bc = 0;
-
 	triangle();
 	~triangle();
 };
