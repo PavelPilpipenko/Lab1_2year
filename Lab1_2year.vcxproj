@@ -157,6 +157,7 @@
     <ClInclude Include="pointA.h" />
     <ClInclude Include="pointB.h" />
     <ClInclude Include="pointC.h" />
+    <ClInclude Include="tetragon.h" />
     <ClInclude Include="triangle.h" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tetragon.cpp" />
     <ClCompile Include="triangle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

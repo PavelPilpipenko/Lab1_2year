@@ -3,7 +3,6 @@
 #include "iostream"
 
 using std::cout;
-using std::cin;
 
 bool triangle::_TriangleOrNot(double distAB, double distAC, double distBC)
 {
@@ -47,10 +46,6 @@ triangle::triangle()
 		cout << "\nS = " << _S;
 		check(_ab, _ac, _bc, _S);
 	}
-	
-
-	//cout << "Enter name for triangle: ";
-	//cin >> tr_name;
 }
 
 triangle::~triangle()

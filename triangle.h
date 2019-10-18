@@ -5,9 +5,7 @@
 class triangle : public Base
 {
 private:
-	point _a;
-	point _b;
-	point _c;
+	point _a, _b, _c;
 	double _ab = 0, _ac = 0, _bc = 0, _P = 0, _S = 0;
 	bool _TrOrNot;
 	bool _TriangleOrNot(double distAB, double distAC, double distBC);
