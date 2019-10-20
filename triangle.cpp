@@ -4,17 +4,6 @@
 
 using std::cout;
 
-/*bool triangle::TriangleOrNot(double distAB, double distAC, double distBC)
-{
-	if ((distAB + distBC > distAC) && (distAB + distAC > distBC) && (distBC + distAC > distAB)) {
-		cout << "\nTriangle created";
-		return true;
-	}
-	else {
-		cout << "\nThis is not triangle";
-		return false;
-	}
-}*/
 void triangle::check(double distAB, double distAC, double distBC, double area)
 {
 	if ((distAB == distAC) && (distAC == distBC)) {
@@ -30,7 +19,6 @@ void triangle::check(double distAB, double distAC, double distBC, double area)
 }
 triangle::triangle()
 {
-	//char tr_name;
 	create_point(_a);
 	create_point(_b);
 	create_point(_c);

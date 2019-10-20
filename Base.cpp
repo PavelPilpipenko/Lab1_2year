@@ -90,7 +90,7 @@ void Base::create_point(point &p)
 {
 	point temp;
 	cout << "\nEnter X for point: ";
-	cin >> temp.x;// нужен сеттер а не в область видимости функции
+	cin >> temp.x;
 	p.x = temp.x;
 	cout << "Enter Y for point: ";
 	cin >> temp.y;
@@ -105,7 +105,3 @@ Base::Base()
 Base::~Base()
 {
 }
-
-
-
-//Base::Base(double x, double y, char name) : x(x), y(y), name(name) {}

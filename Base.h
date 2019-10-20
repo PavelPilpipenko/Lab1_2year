@@ -22,10 +22,3 @@ public:
 	Base();
 	~Base();
 };
-
-//Base operator + (Base pointPlus);//перегрузка +
-//{
-//	double xValue = this->x + pointPlus.x;
-//	double yValue = this->y + pointPlus.y;
-//	return Base(xValue, yValue);
-//}
