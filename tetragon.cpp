@@ -4,7 +4,7 @@
 
 using std::cout;
 
-bool tetragon::TetragonOrNot(double distAB, double distBC, double distCD, double distAD)
+/*bool tetragon::TetragonOrNot(double distAB, double distBC, double distCD, double distAD)
 {
 	if ((distAB < distBC + distCD + distAD) && (distBC < distAB + distCD + distAD) && (distCD < distAB + distBC + distAD) && (distAD < distAB + distBC + distCD)) {
 		cout << "\nTetragon created";
@@ -14,16 +14,16 @@ bool tetragon::TetragonOrNot(double distAB, double distBC, double distCD, double
 		cout << "\nThis is not Tetragon";
 		return false;
 	}
-}
+}*/
 
-void tetragon::check(double distAB, double distBC, double distCD, double distAD, double area)
+void tetragon::check(double distAB, double distBC, double distCD, double distAD, double area)//íå ïðîâåðÿåò êâàäðàò ÈÑÏÐÀÂÈÒÜ
 {
 	bool rectangle = false;
 	double d;
 	d = distTo(_a, _c);
 	if ((distAB == distCD) && (distBC == distAD)) {
 		cout << "\nThis is parallelogram";
-		if ((area == distAB * distBC) && (d == pow(distAB,2) + pow(distBC,2))) {
+		if ((area == distAB * distBC) && (pow(d, 2) == pow(distAB, 2) + pow(distBC, 2))) {
 			cout << "\n...\nThis is rectangle";
 			rectangle = true;
 			if (area == distAB * distAB) {
@@ -52,13 +52,18 @@ tetragon::tetragon()
 	_bc = distTo(_b, _c);
 	_cd = distTo(_c, _d);
 	_ad = distTo(_a, _d);
-	_TetrOrNot = TetragonOrNot(_ab, _bc, _cd, _ad);
+	_TetrOrNot = FigureOrNot(_ab, _bc, _cd, _ad);
 	if (_TetrOrNot) {
+		cout << "\nTetragon created";
 		_P = perimetr(_ab, _bc, _cd, _ad);
 		cout << "\nP = " << _P;
 		_S = area(_ab, _bc, _cd, _ad);
 		cout << "\nS = " << _S;
 		check(_ab, _bc, _cd, _ad, _S);
+	}
+	else {
+		cout << "\nThis is not Tetragon";
+		return;
 	}
 }
 

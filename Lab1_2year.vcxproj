@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Base.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="pentagon.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="pointA.h" />
     <ClInclude Include="pointB.h" />
@@ -169,6 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="pentagon.cpp" />
     <ClCompile Include="tetragon.cpp" />
     <ClCompile Include="triangle.cpp" />
   </ItemGroup>

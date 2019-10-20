@@ -8,7 +8,7 @@ private:
 	point _a, _b, _c;
 	double _ab = 0, _ac = 0, _bc = 0, _P = 0, _S = 0;
 	bool _TrOrNot;
-	bool _TriangleOrNot(double distAB, double distAC, double distBC);
+	//bool TriangleOrNot(double distAB, double distAC, double distBC);
 	void check(double distAB, double distAC, double distBC, double area);
 public:
 	triangle();
