@@ -47,7 +47,7 @@ double Base::area(double distAB, double distBC, double distCD, double distDE, do
 
 bool Base::FigureOrNot(double distAB, double distAC, double distBC)
 {
-	if ((distAB + distBC > distAC) && (distAB + distAC > distBC) && (distBC + distAC > distAB)) {
+	if ((distAB + distBC > distAC) && (distAB + distAC > distBC) && (distBC + distAC > distAB)) { //Cheks the existence of triangle. Every side must be smaller then sum of other sides.
 		return true;
 	}
 	else {
@@ -57,7 +57,7 @@ bool Base::FigureOrNot(double distAB, double distAC, double distBC)
 
 bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distAD)
 {
-	if ((distAB < distBC + distCD + distAD) && (distBC < distAB + distCD + distAD) && (distCD < distAB + distBC + distAD) && (distAD < distAB + distBC + distCD)) {
+	if ((distAB < distBC + distCD + distAD) && (distBC < distAB + distCD + distAD) && (distCD < distAB + distBC + distAD) && (distAD < distAB + distBC + distCD)) { //Cheks the existence of tetragon. Every side must be bigger than sum of other sides.
 		return true;
 	}
 	else {
@@ -69,9 +69,9 @@ bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distD
 {
 	bool TrOrNot = false;
 	bool TetrOrNot = false;
-	TrOrNot = FigureOrNot(distAB, distBC, distD);
-	TetrOrNot = FigureOrNot(distCD, distDE, distAE, distD);
-	if ((TrOrNot) && (TetrOrNot)) {
+	TrOrNot = FigureOrNot(distAB, distBC, distD); //Check the triangle existence.
+	TetrOrNot = FigureOrNot(distCD, distDE, distAE, distD); //Check the tetragon existence.
+	if ((TrOrNot) && (TetrOrNot)) { //if triangle and pentagon exists - return true.
 		return true;
 	}
 	else {
@@ -81,7 +81,7 @@ bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distD
 
 double Base::distTo(point alfa, point beta)
 {
-	double dist = sqrt(pow((alfa.x - beta.x), 2) + pow((alfa.y - beta.y), 2));
+	double dist = sqrt(pow((alfa.x - beta.x), 2) + pow((alfa.y - beta.y), 2)); //Formula of dist between points.
 	return dist;
 }
 
@@ -90,10 +90,10 @@ void Base::create_point(point &p)
 {
 	point temp;
 	cout << "\nEnter X for point: ";
-	cin >> temp.x;
+	cin >> temp.x; //User's input the coordinate x.
 	p.x = temp.x;
 	cout << "Enter Y for point: ";
-	cin >> temp.y;
+	cin >> temp.y; //User's input the coordinate y.
 	p.y = temp.y;
 	cout << "Point created";
 }
