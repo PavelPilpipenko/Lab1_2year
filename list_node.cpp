@@ -2,13 +2,14 @@
 #include "list_node.h"
 
 
-template class<T> list_node<T>::list_node()
+template <class T> list_node<T>::list_node()
 { 
 	next = nullptr;
 	prev = nullptr;
+	info = T();
 }
 
-list_node::~list_node()
+template<class T> list_node<T>::~list_node()
 {
 }
 

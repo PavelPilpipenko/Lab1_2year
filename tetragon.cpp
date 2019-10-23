@@ -30,6 +30,12 @@ void tetragon::check(double distAB, double distBC, double distCD, double distAD,
 	}
 }
 
+void tetragon::print()
+{
+	cout << "\nTetragon:" << "\nP = " << _P;
+	cout << "\nS = " << _S;
+}
+
 tetragon::tetragon()
 {
 	create_point(_a);

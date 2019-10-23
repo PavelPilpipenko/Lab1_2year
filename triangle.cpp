@@ -17,6 +17,27 @@ void triangle::check(double distAB, double distAC, double distBC, double area)
 		cout << "\nright triangle"; //прямоугольный треугольник
 	}
 }
+
+triangle triangle::operator=(triangle tr)
+{
+	triangle temp;
+	temp._a = tr._a;
+	temp._b = tr._b;
+	temp._c = tr._c;
+	temp._ab = tr._ab;
+	temp._ac = tr._ac;
+	temp._bc = tr._bc;
+	temp._S = tr._S;
+	temp._P = tr._P;
+	return temp;
+}
+
+void triangle::print()
+{
+	cout << "\nTriangle:" << "\nP = " << _P;
+	cout << "\nS = " << _S;
+}
+
 triangle::triangle()
 {
 	create_point(_a);

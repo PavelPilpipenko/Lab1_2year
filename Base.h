@@ -3,9 +3,16 @@
 class Base
 {
 protected:
-	struct point {
+	class point{
+	public:
 		double x;//coordinate x.
 		double y;//coordinate y.
+		point operator = (point alfa) {
+			point beta;
+			beta.x = alfa.x;
+			beta.y = alfa.y;
+			return beta;
+		}
 	};
 	/**
 	Returns the perimetr of triangle. 
@@ -85,6 +92,7 @@ protected:
 	*/
 	void create_point(point &p);
 public:
+	virtual void print() = 0;
 	Base();
 	~Base();
 };

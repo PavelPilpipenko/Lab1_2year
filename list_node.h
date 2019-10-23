@@ -1,4 +1,8 @@
 #pragma once
+#include"Base.h"
+#include"triangle.h"
+#include"tetragon.h"
+#include"pentagon.h"
 
 template <class T>
 class list_node

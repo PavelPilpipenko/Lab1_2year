@@ -10,6 +10,8 @@ private:
 	bool _TrOrNot;
 	void check(double distAB, double distAC, double distBC, double area);
 public:
+	triangle operator = (triangle tr);
+	void print() override;
 	triangle();
 	~triangle();
 };

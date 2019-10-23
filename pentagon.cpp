@@ -11,6 +11,12 @@ void pentagon::check(double distAB, double distBC, double distCD, double distDE,
 	}
 }
 
+void pentagon::print()
+{
+	cout << "\nPentagon:" << "\nP = " << _P;
+	cout << "\nS = " << _S;
+}
+
 pentagon::pentagon()
 {
 	create_point(_a);
