@@ -1,6 +1,7 @@
 #include "pch.h"
+#include<iostream>
 #include "pentagon.h"
-#include <iostream>
+
 
 using std::cout;
 
@@ -11,6 +12,33 @@ void pentagon::check(double distAB, double distBC, double distCD, double distDE,
 	}
 }
 
+pentagon pentagon::Set_pentagon()
+{
+	pentagon tmp;
+	create_point(tmp._a);
+	create_point(tmp._b);
+	create_point(tmp._c);
+	create_point(tmp._d);
+	create_point(tmp._e);
+
+	tmp._ab = distTo(tmp._a, tmp._b);
+	tmp._bc = distTo(tmp._b, tmp._c);
+	tmp._cd = distTo(tmp._c, tmp._d);
+	tmp._de = distTo(tmp._d, tmp._e);
+	tmp._ae = distTo(tmp._a, tmp._e);
+	tmp._acDiagonal = distTo(tmp._a, tmp._c);
+	tmp._PentOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae, tmp._acDiagonal);
+	if (tmp._PentOrNot) {
+		cout << "\nPentagon created";
+		tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae);
+		cout << "\nP = " << tmp._P;
+		tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae, tmp._acDiagonal);
+		cout << "\nS = " << tmp._S;
+		check(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae);
+	}
+	return tmp;
+}
+
 void pentagon::print()
 {
 	cout << "\nPentagon:" << "\nP = " << _P;
@@ -19,27 +47,7 @@ void pentagon::print()
 
 pentagon::pentagon()
 {
-	create_point(_a);
-	create_point(_b);
-	create_point(_c);
-	create_point(_d);
-	create_point(_e);
-
-	_ab = distTo(_a, _b);
-	_bc = distTo(_b, _c);
-	_cd = distTo(_c, _d);
-	_de = distTo(_d, _e);
-	_ae = distTo(_a, _e);
-	_acDiagonal = distTo(_a, _c);
-	_PentOrNot = FigureOrNot(_ab, _bc, _cd, _de, _ae, _acDiagonal);
-	if (_PentOrNot) {
-		cout << "\nPentagon created";
-		_P = perimetr(_ab, _bc, _cd, _de, _ae);
-		cout << "\nP = " << _P;
-		_S = area(_ab, _bc, _cd, _de, _ae, _acDiagonal);
-		cout << "\nS = " << _S;
-		check(_ab, _bc, _cd, _de, _ae);
-	}
+	
 }
 
 

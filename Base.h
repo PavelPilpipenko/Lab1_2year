@@ -13,6 +13,12 @@ protected:
 			beta.y = alfa.y;
 			return beta;
 		}
+		point operator = (double zero) {// не работает оператор
+			point temp;
+			temp.x = zero;
+			temp.y = zero;
+			return temp;
+		}
 	};
 	/**
 	Returns the perimetr of triangle. 

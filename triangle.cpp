@@ -1,6 +1,7 @@
 #include "pch.h"
+#include<iostream>
 #include "triangle.h"
-#include <iostream>
+
 
 using std::cout;
 
@@ -32,34 +33,42 @@ triangle triangle::operator=(triangle tr)
 	return temp;
 }
 
+triangle triangle::Set_triangle()
+{
+	triangle tmp;
+	create_point(tmp._a);
+	create_point(tmp._b);
+	create_point(tmp._c);
+
+	tmp._ab = distTo(tmp._a, tmp._b);
+	tmp._bc = distTo(tmp._b, tmp._c);
+	tmp._ac = distTo(tmp._a, tmp._c);
+	tmp._TrOrNot = FigureOrNot(tmp._ab, tmp._ac, tmp._bc);
+	if (tmp._TrOrNot) {
+		cout << "\nTriangle created";
+		tmp._P = perimetr(tmp._ab, tmp._ac, tmp._bc);
+		cout << "\nP = " << tmp._P;
+		tmp._S = area(tmp._ab, tmp._ac, tmp._bc);
+		cout << "\nS = " << tmp._S;
+		check(tmp._ab, tmp._ac, tmp._bc, tmp._S);
+	}
+	else {
+		cout << "\nThis is not triangle";
+	}
+	return tmp;
+}
+
 void triangle::print()
 {
 	cout << "\nTriangle:" << "\nP = " << _P;
 	cout << "\nS = " << _S;
 }
 
+
 triangle::triangle()
 {
-	create_point(_a);
-	create_point(_b);
-	create_point(_c);
-
-	_ab = distTo(_a, _b);
-	_bc = distTo(_b, _c);
-	_ac = distTo(_a, _c);
-	_TrOrNot = FigureOrNot(_ab, _ac, _bc);
-	if (_TrOrNot) {
-		cout << "\nTriangle created";
-		_P = perimetr(_ab, _ac, _bc);
-		cout << "\nP = " << _P;
-		_S = area(_ab, _ac, _bc);
-		cout << "\nS = " << _S;
-		check(_ab, _ac, _bc, _S);
-	}
-	else {
-		cout << "\nThis is not triangle";
-		return;
-	}
+	_a = _b = _c = 0;
+	_ab = _ac = _bc = _S = _P = 0;
 }
 
 triangle::~triangle()

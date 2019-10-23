@@ -1,15 +1,30 @@
 #include "pch.h"
+#include<iostream>
 #include "list_node.h"
 
 
-template <class T> list_node<T>::list_node()
+using std::cout;
+using std::cin;
+
+
+type list_node::Set_type(type name)
+{
+	return _type_name = name;
+}
+
+type list_node::Get_type()
+{
+	return _type_name;
+}
+
+list_node::list_node()
 { 
 	next = nullptr;
 	prev = nullptr;
-	info = T();
+	_type_name = not_setted;
 }
 
-template<class T> list_node<T>::~list_node()
+list_node::~list_node()
 {
 }
 

@@ -1,6 +1,7 @@
 #include "pch.h"
+#include<iostream>
 #include "tetragon.h"
-#include <iostream>
+
 
 using std::cout;
 
@@ -30,6 +31,49 @@ void tetragon::check(double distAB, double distBC, double distCD, double distAD,
 	}
 }
 
+tetragon tetragon::operator=(tetragon tetr)
+{
+	tetragon temp;
+	temp._a = tetr._a;
+	temp._b = tetr._b;
+	temp._c = tetr._c;
+	temp._d = tetr._d;
+	temp._ab = tetr._ab;
+	temp._bc = tetr._bc;
+	temp._cd = tetr._cd;
+	temp._ad = tetr._ad;
+	temp._P = tetr._P;
+	temp._S = tetr._S;
+	return temp;
+}
+
+tetragon tetragon::Set_tetragon()
+{
+	tetragon tmp;
+	create_point(tmp._a);
+	create_point(tmp._b);
+	create_point(tmp._c);
+	create_point(tmp._d);
+
+	tmp._ab = distTo(tmp._a, tmp._b);
+	tmp._bc = distTo(tmp._b, tmp._c);
+	tmp._cd = distTo(tmp._c, tmp._d);
+	tmp._ad = distTo(tmp._a, tmp._d);
+	tmp._TetrOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+	if (tmp._TetrOrNot) {
+		cout << "\nTetragon created";
+		tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+		cout << "\nP = " << tmp._P;
+		tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+		cout << "\nS = " << tmp._S;
+		check(tmp._ab, tmp._bc, tmp._cd, tmp._ad, tmp._S);
+	}
+	else {
+		cout << "\nThis is not Tetragon";
+	}
+	return tmp;
+}
+
 void tetragon::print()
 {
 	cout << "\nTetragon:" << "\nP = " << _P;
@@ -38,28 +82,8 @@ void tetragon::print()
 
 tetragon::tetragon()
 {
-	create_point(_a);
-	create_point(_b);
-	create_point(_c);
-	create_point(_d);
-
-	_ab = distTo(_a, _b);
-	_bc = distTo(_b, _c);
-	_cd = distTo(_c, _d);
-	_ad = distTo(_a, _d);
-	_TetrOrNot = FigureOrNot(_ab, _bc, _cd, _ad);
-	if (_TetrOrNot) {
-		cout << "\nTetragon created";
-		_P = perimetr(_ab, _bc, _cd, _ad);
-		cout << "\nP = " << _P;
-		_S = area(_ab, _bc, _cd, _ad);
-		cout << "\nS = " << _S;
-		check(_ab, _bc, _cd, _ad, _S);
-	}
-	else {
-		cout << "\nThis is not Tetragon";
-		return;
-	}
+	_a = _b = _c = _d = 0;
+	_ab = _bc = _cd = _ad = _S = _P = 0;
 }
 
 

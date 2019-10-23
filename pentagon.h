@@ -10,6 +10,7 @@ private:
 	bool _PentOrNot;
 	void check(double distAB, double distBC, double distCD, double distDE, double distAE);
 public:
+	pentagon Set_pentagon();
 	void print() override;
 	pentagon();
 	~pentagon();

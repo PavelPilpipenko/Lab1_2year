@@ -10,6 +10,8 @@ private:
 	bool _TetrOrNot;
 	void check(double distAB, double distBC, double distCD, double distAD, double area);
 public:
+	tetragon operator = (tetragon tetr);
+	tetragon Set_tetragon();
 	void print() override;
 
 	tetragon();
