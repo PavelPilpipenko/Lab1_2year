@@ -67,8 +67,7 @@ bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distA
 
 bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distDE, double distAE, double distD)
 {
-	bool TrOrNot = false;
-	bool TetrOrNot = false;
+	bool TetrOrNot, TrOrNot = false;
 	TrOrNot = FigureOrNot(distAB, distBC, distD); //Check the triangle existence.
 	TetrOrNot = FigureOrNot(distCD, distDE, distAE, distD); //Check the tetragon existence.
 	if ((TrOrNot) && (TetrOrNot)) { //if triangle and pentagon exists - return true.

@@ -3,29 +3,22 @@
 class Base
 {
 protected:
-	class point{
+	class point {
 	public:
 		double x;//coordinate x.
 		double y;//coordinate y.
-		point operator = (point alfa) {
-			point beta;
-			beta.x = alfa.x;
-			beta.y = alfa.y;
-			return beta;
-		}
-		point operator = (double zero) {// не работает оператор
-			point temp;
-			temp.x = zero;
-			temp.y = zero;
-			return temp;
+		point operator = (point op2) {
+			x = op2.x;
+			y = op2.y;
+			return *this;	
 		}
 	};
 	/**
 	Returns the perimetr of triangle. 
 	
-	@param dist from point A to point B.
-	@param dist from point A to point C.
-	@param dist from point B to point C.
+	@param distAB Dist from point A to point B.
+	@param distAC Dist from point A to point C.
+	@param distBC Dist from point B to point C.
 	@return the perimetr of a triangle.
 	*/
 	double perimetr(double distAB, double distAC, double distBC);

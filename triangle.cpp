@@ -21,16 +21,15 @@ void triangle::check(double distAB, double distAC, double distBC, double area)
 
 triangle triangle::operator=(triangle tr)
 {
-	triangle temp;
-	temp._a = tr._a;
-	temp._b = tr._b;
-	temp._c = tr._c;
-	temp._ab = tr._ab;
-	temp._ac = tr._ac;
-	temp._bc = tr._bc;
-	temp._S = tr._S;
-	temp._P = tr._P;
-	return temp;
+	_a = tr._a;
+	_b = tr._b;
+	_c = tr._c;
+	_ab = tr._ab;
+	_ac = tr._ac;
+	_bc = tr._bc;
+	_S = tr._S;
+	_P = tr._P;
+	return *this;
 }
 
 triangle triangle::Set_triangle()
@@ -67,7 +66,9 @@ void triangle::print()
 
 triangle::triangle()
 {
-	_a = _b = _c = 0;
+	_a.x = _a.y = 0;
+	_b = _a;
+	_c = _a;
 	_ab = _ac = _bc = _S = _P = 0;
 }
 

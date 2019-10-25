@@ -12,7 +12,24 @@ void pentagon::check(double distAB, double distBC, double distCD, double distDE,
 	}
 }
 
-pentagon pentagon::Set_pentagon()
+pentagon pentagon::operator=(pentagon pent)
+{
+	_a = pent._a;
+	_b = pent._b;
+	_c = pent._c;
+	_d = pent._d;
+	_e = pent._e;
+	_ab = pent._ab;
+	_bc = pent._bc;
+	_cd = pent._cd;
+	_de = pent._de;
+	_ae = pent._ae;
+	_P = pent._P;
+	_S = pent._S;
+	return *this;
+}
+
+pentagon pentagon::Set_pentagon()// return tmp A copy of created pentagon that we need to assign to the pentagon, created in the list,  DO same comment for triangle and tetragon 
 {
 	pentagon tmp;
 	create_point(tmp._a);
@@ -47,7 +64,12 @@ void pentagon::print()
 
 pentagon::pentagon()
 {
-	
+	_a.x = _a.y = 0;
+	_b = _a;
+	_c = _a;
+	_d = _a;
+	_e = _a;
+	_ab = _bc = _cd = _de = _ae = _P = _S = 0;
 }
 
 

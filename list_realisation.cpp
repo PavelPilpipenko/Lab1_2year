@@ -37,7 +37,7 @@ void list_realisation::addElTetragon()
 {
 	list_node *temp = new list_node();
 	temp->Set_type(is_tetragon);
-	temp->tetr_info.Set_tetragon();
+	temp->tetr_info = temp->tetr_info.Set_tetragon();
 
 	if (head == nullptr) {
 		head = temp;
@@ -54,7 +54,7 @@ void list_realisation::addElPentagon()
 {
 	list_node *temp = new list_node();
 	temp->Set_type(is_pentagon);
-	temp->pent_info.Set_pentagon();
+	temp->pent_info = temp->pent_info.Set_pentagon();
 
 	if (head == nullptr) {
 		head = temp;

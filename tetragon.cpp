@@ -33,18 +33,17 @@ void tetragon::check(double distAB, double distBC, double distCD, double distAD,
 
 tetragon tetragon::operator=(tetragon tetr)
 {
-	tetragon temp;
-	temp._a = tetr._a;
-	temp._b = tetr._b;
-	temp._c = tetr._c;
-	temp._d = tetr._d;
-	temp._ab = tetr._ab;
-	temp._bc = tetr._bc;
-	temp._cd = tetr._cd;
-	temp._ad = tetr._ad;
-	temp._P = tetr._P;
-	temp._S = tetr._S;
-	return temp;
+	_a = tetr._a;
+	_b = tetr._b;
+	_c = tetr._c;
+	_d = tetr._d;
+	_ab = tetr._ab;
+	_bc = tetr._bc;
+	_cd = tetr._cd;
+	_ad = tetr._ad;
+	_P = tetr._P;
+	_S = tetr._S;
+	return *this;
 }
 
 tetragon tetragon::Set_tetragon()
@@ -82,7 +81,10 @@ void tetragon::print()
 
 tetragon::tetragon()
 {
-	_a = _b = _c = _d = 0;
+	_a.x = _a.y = 0;
+	_b = _a;
+	_c = _a;
+	_d = _a;
 	_ab = _bc = _cd = _ad = _S = _P = 0;
 }
 
