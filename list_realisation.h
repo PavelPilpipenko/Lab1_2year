@@ -18,6 +18,6 @@ public:
 	void deleteEl(list_node *delEl);
 	void deletelist();
 	void printList();
-	list_node * Get_head();
+	void searchToDelete();
 };
 

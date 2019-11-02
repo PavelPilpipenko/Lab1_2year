@@ -157,9 +157,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="pentagon.h" />
     <ClInclude Include="point.h" />
-    <ClInclude Include="pointA.h" />
-    <ClInclude Include="pointB.h" />
-    <ClInclude Include="pointC.h" />
     <ClInclude Include="tetragon.h" />
     <ClInclude Include="triangle.h" />
   </ItemGroup>

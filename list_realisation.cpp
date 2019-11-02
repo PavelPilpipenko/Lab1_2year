@@ -15,7 +15,7 @@ list_realisation::list_realisation()
 list_realisation::~list_realisation()
 {
 	list_node * current = head;
-	list_node * tmp;
+	list_node * tmp = head;
 	
 	while (current) {
 		current = tmp;
@@ -29,15 +29,17 @@ void list_realisation::addElTriangle()
 	list_node *temp = new list_node();
 	temp->Set_type(is_triangle);
 	temp->tr_info = temp->tr_info.Set_triangle();//не возвращает значение.
-
-	if (head == nullptr) {
-		head = temp;
-		tail = temp;
-	}
-	else {
-		temp->prev = tail;
-		tail->next = temp;
-		tail = temp;
+	bool trOrNot = temp->tr_info.Get_existence();
+	if (trOrNot) {
+		if (head == nullptr) {
+			head = temp;
+			tail = temp;
+		}
+		else {
+			temp->prev = tail;
+			tail->next = temp;
+			tail = temp;
+		}
 	}
 }
 
@@ -46,15 +48,17 @@ void list_realisation::addElTetragon()
 	list_node *temp = new list_node();
 	temp->Set_type(is_tetragon);
 	temp->tetr_info = temp->tetr_info.Set_tetragon();
-
-	if (head == nullptr) {
-		head = temp;
-		tail = temp;
-	}
-	else {
-		temp->prev = tail;
-		tail->next = temp;
-		tail = temp;
+	bool tetrOrNot = temp->tetr_info.Get_existence();
+	if (tetrOrNot) {
+		if (head == nullptr) {
+			head = temp;
+			tail = temp;
+		}
+		else {
+			temp->prev = tail;
+			tail->next = temp;
+			tail = temp;
+		}
 	}
 }
 
@@ -63,15 +67,17 @@ void list_realisation::addElPentagon()
 	list_node *temp = new list_node();
 	temp->Set_type(is_pentagon);
 	temp->pent_info = temp->pent_info.Set_pentagon();
-
-	if (head == nullptr) {
-		head = temp;
-		tail = temp;
-	}
-	else {
-		temp->prev = tail;
-		tail->next = temp;
-		tail = temp;
+	bool pentOrNot = temp->pent_info.Get_existence();
+	if (pentOrNot) {
+		if (head == nullptr) {
+			head = temp;
+			tail = temp;
+		}
+		else {
+			temp->prev = tail;
+			tail->next = temp;
+			tail = temp;
+		}
 	}
 }
 
@@ -103,7 +109,7 @@ void list_realisation::deleteEl(list_node * delEl)
 void list_realisation::deletelist()
 {
 	list_node * current = head;
-	list_node * tmp;
+	list_node * tmp = head;
 
 	while (current) {
 		current = tmp;
@@ -150,9 +156,24 @@ void list_realisation::printList()
 	}
 }
 
-list_node * list_realisation::Get_head()
+void list_realisation::searchToDelete()
 {
-	return head;
+	int number;
+	list_node * current = head;
+	cout << "\n\t Enter the number of figure which you want to delete: ";
+	std::cin >> number;
+	for (int i = 1; i < number; i++) {
+		current = current->next;
+	}
+	if (current) {
+		deleteEl(current);
+		cout << "\n\t element has been deleted";
+	}
+	else {
+		cout << "\n\t Invalid number";
+	}	
 }
+
+
 
 

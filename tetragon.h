@@ -12,6 +12,7 @@ private:
 public:
 	tetragon operator = (tetragon tetr);
 	tetragon Set_tetragon();
+	bool Get_existence() override;
 	void print() override;
 
 	tetragon();

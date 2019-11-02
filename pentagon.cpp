@@ -24,6 +24,7 @@ pentagon pentagon::operator=(pentagon pent)
 	_cd = pent._cd;
 	_de = pent._de;
 	_ae = pent._ae;
+	_PentOrNot = pent._PentOrNot;
 	_P = pent._P;
 	_S = pent._S;
 	return *this;
@@ -54,6 +55,11 @@ pentagon pentagon::Set_pentagon()// return tmp A copy of created pentagon that w
 		check(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae);
 	}
 	return tmp;
+}
+
+bool pentagon::Get_existence()
+{
+	return _PentOrNot;
 }
 
 void pentagon::print()

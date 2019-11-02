@@ -41,6 +41,7 @@ tetragon tetragon::operator=(tetragon tetr)
 	_bc = tetr._bc;
 	_cd = tetr._cd;
 	_ad = tetr._ad;
+	_TetrOrNot = tetr._TetrOrNot;
 	_P = tetr._P;
 	_S = tetr._S;
 	return *this;
@@ -71,6 +72,11 @@ tetragon tetragon::Set_tetragon()
 		cout << "\nThis is not Tetragon";
 	}
 	return tmp;
+}
+
+bool tetragon::Get_existence()
+{
+	return _TetrOrNot;
 }
 
 void tetragon::print()

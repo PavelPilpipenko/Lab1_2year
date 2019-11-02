@@ -7,6 +7,13 @@ protected:
 	public:
 		double x;//coordinate x.
 		double y;//coordinate y.
+		/**
+		Overloaded assignment operator
+		
+		@param op2 Point which we want to assign to this point.
+		@details Assign the coordinates of op2 to this point.
+		@return *this Modified point.
+		*/
 		point operator = (point op2) {
 			x = op2.x;
 			y = op2.y;
@@ -92,6 +99,7 @@ protected:
 	void create_point(point &p);
 public:
 	virtual void print() = 0;
+	virtual bool Get_existence() = 0;
 	Base();
 	~Base();
 };

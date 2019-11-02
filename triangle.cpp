@@ -27,6 +27,7 @@ triangle triangle::operator=(triangle tr)
 	_ab = tr._ab;
 	_ac = tr._ac;
 	_bc = tr._bc;
+	_TrOrNot = tr._TrOrNot;
 	_S = tr._S;
 	_P = tr._P;
 	return *this;
@@ -55,6 +56,11 @@ triangle triangle::Set_triangle()
 		cout << "\nThis is not triangle";
 	}
 	return tmp;
+}
+
+bool triangle::Get_existence()
+{
+	return _TrOrNot;
 }
 
 void triangle::print()

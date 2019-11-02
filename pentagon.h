@@ -12,6 +12,7 @@ private:
 public:
 	pentagon operator = (pentagon pent);
 	pentagon Set_pentagon();
+	bool Get_existence() override;
 	void print() override;
 	pentagon();
 	~pentagon();
