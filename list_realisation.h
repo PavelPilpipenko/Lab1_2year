@@ -15,7 +15,9 @@ public:
 	void addElTriangle();
 	void addElTetragon();
 	void addElPentagon();
+	void deleteEl(list_node *delEl);
+	void deletelist();
 	void printList();
-
+	list_node * Get_head();
 };
 

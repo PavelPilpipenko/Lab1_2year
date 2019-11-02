@@ -14,6 +14,14 @@ list_realisation::list_realisation()
 
 list_realisation::~list_realisation()
 {
+	list_node * current = head;
+	list_node * tmp;
+	
+	while (current) {
+		current = tmp;
+		current = current->next;
+		delete tmp;
+	}
 }
 
 void list_realisation::addElTriangle()
@@ -67,6 +75,45 @@ void list_realisation::addElPentagon()
 	}
 }
 
+void list_realisation::deleteEl(list_node * delEl)
+{
+	if ((delEl == head) && (delEl == tail)) {
+		delete delEl;
+		head = nullptr;
+		tail = nullptr;
+		return;
+	}
+	else if (delEl == head) {
+		delEl->next->prev = nullptr;
+		head = delEl->next;
+		delete delEl;
+	}
+	else if (delEl == tail) {
+		delEl->prev->next = nullptr;
+		tail = delEl->prev;
+		delete delEl;
+	}
+	else {
+		delEl->next->prev = delEl->prev;
+		delEl->prev->next = delEl->next;
+		delete delEl;
+	}
+}
+
+void list_realisation::deletelist()
+{
+	list_node * current = head;
+	list_node * tmp;
+
+	while (current) {
+		current = tmp;
+		current = current->next;
+		delete tmp;
+	}
+	head = nullptr;
+	tail = nullptr;
+}
+
 
 void list_realisation::printList()
 {
@@ -102,3 +149,10 @@ void list_realisation::printList()
 		cout << "list is empty";
 	}
 }
+
+list_node * list_realisation::Get_head()
+{
+	return head;
+}
+
+
