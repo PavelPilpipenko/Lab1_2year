@@ -106,6 +106,41 @@ bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distD
 		return false;
 	}
 }
+bool Base::checkOnIntersections(point & lineApoint1, point & lineApoint2, point & lineBpoint1, point & lineBpoint2)
+{
+	double lineAñoefficient, lineBcoefficient, lineAfreeMember, lineBfreeMember, intersectionY1, intersectionY2;
+	point intersectionPoint;
+	if (lineApoint2.y == lineApoint1.y) {
+		lineAñoefficient = 0;
+	}
+	else {
+		lineAñoefficient = ((lineApoint2.y - lineApoint1.y) / (lineApoint2.x - lineApoint1.x));
+	}
+	if (lineBpoint2.y == lineBpoint1.y) {
+		lineBcoefficient = 0;
+	}
+	else {
+		lineBcoefficient = ((lineBpoint2.y - lineBpoint1.y) / (lineBpoint2.x - lineBpoint1.x));
+	}
+	if (lineAñoefficient == lineBcoefficient) {
+		return false;
+	}
+	else {
+		lineAfreeMember = lineApoint1.y - (lineAñoefficient * lineApoint1.x);
+		lineBfreeMember = lineBpoint1.y - (lineBcoefficient * lineBpoint1.x);
+		intersectionPoint.x = (lineBfreeMember - lineAfreeMember) / (lineAñoefficient - lineBcoefficient);
+		intersectionY1 = (lineAñoefficient * intersectionPoint.x) + lineAfreeMember;
+		intersectionY2 = (lineBcoefficient * intersectionPoint.x) + lineBfreeMember;
+		if (((intersectionY1 == intersectionY2) && (lineApoint1.x <= lineBpoint2.x) && (lineBpoint2.x <= lineApoint2.x)) || (intersectionY1 == intersectionY2) && (lineApoint1.x <= lineBpoint1.x) && (lineBpoint1.x <= lineApoint2.x)) {
+			intersectionPoint.y = intersectionY1;
+			cout << "\nThis is figure with intersections\nIntersection point: (" << intersectionPoint.x << "," << intersectionPoint.y << ")\n";
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}
 /**
 Calculates the dist from point to point.
 

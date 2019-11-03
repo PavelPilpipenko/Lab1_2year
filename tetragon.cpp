@@ -4,6 +4,7 @@
 
 
 using std::cout;
+using std::swap;
 
 void tetragon::check(double distAB, double distBC, double distCD, double distAD, double area)
 {
@@ -50,26 +51,55 @@ tetragon tetragon::operator=(tetragon tetr)
 tetragon tetragon::Set_tetragon()
 {
 	tetragon tmp;
+	bool intersection, swapcoopdinates1 = false, swapcoordinates2 = false;
 	create_point(tmp._a);
 	create_point(tmp._b);
 	create_point(tmp._c);
 	create_point(tmp._d);
 
-	tmp._ab = distTo(tmp._a, tmp._b);
-	tmp._bc = distTo(tmp._b, tmp._c);
-	tmp._cd = distTo(tmp._c, tmp._d);
-	tmp._ad = distTo(tmp._a, tmp._d);
-	tmp._TetrOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-	if (tmp._TetrOrNot) {
-		cout << "\nTetragon created";
-		tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-		cout << "\nP = " << tmp._P;
-		tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-		cout << "\nS = " << tmp._S;
-		check(tmp._ab, tmp._bc, tmp._cd, tmp._ad, tmp._S);
+	if (tmp._a.x >= tmp._b.x) {
+		swapcoopdinates1 = true;
+		swap(tmp._a.x, tmp._b.x);
+		swap(tmp._a.y, tmp._b.y);
+	}
+	if (tmp._c.x >= tmp._d.x) {
+		swapcoordinates2 = true;
+		swap(tmp._c.x, tmp._d.x);
+		swap(tmp._c.y, tmp._d.y);
+	}
+
+	intersection = checkOnIntersections(tmp._a, tmp._b, tmp._c, tmp._d);
+
+	if (swapcoopdinates1) {
+		swap(tmp._a.x, tmp._b.x);
+		swap(tmp._a.y, tmp._b.y);
+	}
+	if (swapcoordinates2) {
+		swap(tmp._c.x, tmp._d.x);
+		swap(tmp._c.y, tmp._d.y);
+	}
+
+
+	if (!intersection) {
+		tmp._ab = distTo(tmp._a, tmp._b);
+		tmp._bc = distTo(tmp._b, tmp._c);
+		tmp._cd = distTo(tmp._c, tmp._d);
+		tmp._ad = distTo(tmp._a, tmp._d);
+		tmp._TetrOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+		if (tmp._TetrOrNot) {
+			cout << "\nTetragon created";
+			tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+			cout << "\nP = " << tmp._P;
+			tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
+			cout << "\nS = " << tmp._S;
+			check(tmp._ab, tmp._bc, tmp._cd, tmp._ad, tmp._S);
+		}
+		else {
+			cout << "\nThis is not Tetragon";
+		}
 	}
 	else {
-		cout << "\nThis is not Tetragon";
+		tmp._TetrOrNot = false;
 	}
 	return tmp;
 }

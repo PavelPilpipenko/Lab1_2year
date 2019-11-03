@@ -83,6 +83,7 @@ protected:
 	@return the pentagon or not. distD - main diagonal(dist from point A to point C). Cheks the existense of triangle ABC and tetragon ACDE. if triangle and tetragon exists - pentagon exists.
 	*/
 	bool FigureOrNot(double distAB, double distBC, double distCD, double distDE, double distAE, double distD);
+	bool checkOnIntersections(point &lineApoint1, point &lineApoint2, point &lineBpoint1, point &lineBpoint2);
 	/**
 	Return the dist from point alfa to point beta.
 

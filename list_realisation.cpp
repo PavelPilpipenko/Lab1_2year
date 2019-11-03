@@ -28,7 +28,7 @@ void list_realisation::addElTriangle()
 {
 	list_node *temp = new list_node();
 	temp->Set_type(is_triangle);
-	temp->tr_info = temp->tr_info.Set_triangle();//не возвращает значение.
+	temp->tr_info = temp->tr_info.Set_triangle();
 	bool trOrNot = temp->tr_info.Get_existence();
 	if (trOrNot) {
 		if (head == nullptr) {
