@@ -15,6 +15,7 @@ public:
 	void addElTriangle();
 	void addElTetragon();
 	void addElPentagon();
+	void swapEl(list_node *elToSwap1, list_node *elToSwap2);
 	void deleteEl(list_node *delEl);
 	void deletelist();
 	void printList();

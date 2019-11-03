@@ -81,6 +81,81 @@ void list_realisation::addElPentagon()
 	}
 }
 
+void list_realisation::swapEl(list_node * elToSwap1, list_node * elToSwap2)
+{
+	list_node temp;
+	if ((elToSwap1 == head) && (elToSwap2 == tail)) {
+		temp.next = elToSwap1->next;
+		elToSwap1->next = nullptr;
+		elToSwap1->prev = elToSwap2->prev;
+		elToSwap1->prev->next = elToSwap1;
+		elToSwap2->prev = nullptr;
+		elToSwap2->next = temp.next;
+		elToSwap2->next->prev = elToSwap2;
+	}
+	else if ((elToSwap1 == tail) && (elToSwap2 == head)) {
+		temp.next = elToSwap2->next;
+		elToSwap2->next = nullptr;
+		elToSwap2->prev = elToSwap1->prev;
+		elToSwap2->prev->next = elToSwap2;
+		elToSwap1->prev = nullptr;
+		elToSwap1->next = temp.next;
+		elToSwap1->next->prev = elToSwap1;
+	}
+	else if (elToSwap1 == head) {
+		temp.next = elToSwap1->next;
+		elToSwap1->next = elToSwap2->next;
+		elToSwap1->next->prev = elToSwap1;
+		elToSwap1->prev = elToSwap2->prev;
+		elToSwap1->prev->next = elToSwap1;
+		elToSwap2->next = temp.next;
+		elToSwap2->next->prev = elToSwap2;
+		elToSwap2->prev = nullptr;
+	}
+	else if (elToSwap2 == head) {
+		temp.next = elToSwap2->next;		
+		elToSwap2->next = elToSwap1->next;
+		elToSwap2->next->prev = elToSwap2;
+		elToSwap2->prev = elToSwap1->prev;
+		elToSwap2->prev->next = elToSwap2;
+		elToSwap1->next = temp.next;
+		elToSwap1->next->prev = elToSwap1;
+		elToSwap1->prev = nullptr;
+	}
+	else if (elToSwap1 == tail) {
+		temp.prev = elToSwap1->prev;
+		elToSwap1->prev = elToSwap2->prev;
+		elToSwap1->prev->next = elToSwap1;
+		elToSwap1->next = elToSwap2->next;
+		elToSwap1->next->prev = elToSwap1;
+		elToSwap2->prev = temp.prev;
+		elToSwap2->prev->next = elToSwap2;
+		elToSwap2->next = nullptr;
+	}
+	else if (elToSwap2 == tail) {
+		temp.prev = elToSwap2->prev;
+		elToSwap2->prev = elToSwap1->prev;
+		elToSwap2->prev->next = elToSwap2;
+		elToSwap2->next = elToSwap1->next;
+		elToSwap2->next->prev = elToSwap2;
+		elToSwap1->prev = temp.prev;
+		elToSwap1->prev->next = elToSwap1;
+		elToSwap1->next = nullptr;
+	}
+	else {
+		temp.next = elToSwap1->next;
+		temp.prev = elToSwap1->prev;
+		elToSwap1->next = elToSwap2->next;
+		elToSwap1->next->prev = elToSwap1;
+		elToSwap1->prev = elToSwap2->prev;
+		elToSwap1->prev->next = elToSwap1;
+		elToSwap2->next = temp.next;
+		elToSwap2->next->prev = elToSwap2;
+		elToSwap2->prev = temp.prev;
+		elToSwap2->prev->next = elToSwap2;
+	}
+}
+
 void list_realisation::deleteEl(list_node * delEl)
 {
 	if ((delEl == head) && (delEl == tail)) {
