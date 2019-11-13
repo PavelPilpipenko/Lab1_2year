@@ -35,27 +35,27 @@ triangle triangle::operator=(triangle tr)
 
 triangle triangle::Set_triangle()
 {
-	triangle tmp;
-	create_point(tmp._a);
-	create_point(tmp._b);
-	create_point(tmp._c);
+	create_point(_a);
+	create_point(_b);
+	create_point(_c);
 
-	tmp._ab = distTo(tmp._a, tmp._b);
-	tmp._bc = distTo(tmp._b, tmp._c);
-	tmp._ac = distTo(tmp._a, tmp._c);
-	tmp._TrOrNot = FigureOrNot(tmp._ab, tmp._ac, tmp._bc);
-	if (tmp._TrOrNot) {
+	_TrOrNot = pointsOnOneLine(_a, _b, _c);
+
+	if (_TrOrNot) {
+		_ab = distTo(_a, _b);
+		_bc = distTo(_b, _c);
+		_ac = distTo(_a, _c);
 		cout << "\nTriangle created";
-		tmp._P = perimetr(tmp._ab, tmp._ac, tmp._bc);
-		cout << "\nP = " << tmp._P;
-		tmp._S = area(tmp._ab, tmp._ac, tmp._bc);
-		cout << "\nS = " << tmp._S;
-		check(tmp._ab, tmp._ac, tmp._bc, tmp._S);
+		_P = perimetr(_ab, _ac, _bc);
+		cout << "\nP = " << _P;
+		_S = area(_ab, _ac, _bc);
+		cout << "\nS = " << _S;
+		check(_ab, _ac, _bc, _S);
 	}
 	else {
 		cout << "\nThis is not triangle";
 	}
-	return tmp;
+	return *this;
 }
 
 bool triangle::Get_existence()

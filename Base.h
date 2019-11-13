@@ -61,29 +61,9 @@ protected:
 
 	@return the area of a pentagon. distD - main diagonal(dist from point A to point C) devides pentagon into triangle and tetragon. Area of pentagon = area of triangle + area of tetragon.
 	*/
-	double area(double distAB, double distBC, double distCD, double distDE, double distAE, double distD);
-	/**
-	Cheks the triagngle existence. Returns true or false.
-
-	@param dist from point A to point B.
-	@param dist from point A to point C.
-	@param dist from point B to point C.
-	@return the triangle or not. Every side of triangle must be smaller than sum of other sides.
-	*/
-	bool FigureOrNot(double distAB, double distAC, double distBC);
-	/**
-	#Overload bool FigureOrNot(double distAB, double distBC, double distCD, double distAD);
-
-	@return the tetragon or not. Every side of tetragon must be bigger than sum of other sides.
-	*/
-	bool FigureOrNot(double distAB, double distBC, double distCD, double distAD);
-	/**
-	#Overload bool FigureOrNot(double distAB, double distBC, double distCD, double distDE, double distAE, double distD);
-
-	@return the pentagon or not. distD - main diagonal(dist from point A to point C). Cheks the existense of triangle ABC and tetragon ACDE. if triangle and tetragon exists - pentagon exists.
-	*/
-	bool FigureOrNot(double distAB, double distBC, double distCD, double distDE, double distAE, double distD);
-	bool checkOnIntersections(point &lineApoint1, point &lineApoint2, point &lineBpoint1, point &lineBpoint2);
+	double area(point a, point b, point c, point d, point e);
+	bool checkOnIntersections(point lineApoint1, point lineApoint2, point lineBpoint1, point lineBpoint2);
+	bool pointsOnOneLine(point a, point b, point c);
 	/**
 	Return the dist from point alfa to point beta.
 

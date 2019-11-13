@@ -32,29 +32,57 @@ pentagon pentagon::operator=(pentagon pent)
 
 pentagon pentagon::Set_pentagon()// return tmp A copy of created pentagon that we need to assign to the pentagon, created in the list,  DO same comment for triangle and tetragon 
 {
-	pentagon tmp;
-	create_point(tmp._a);
-	create_point(tmp._b);
-	create_point(tmp._c);
-	create_point(tmp._d);
-	create_point(tmp._e);
-
-	tmp._ab = distTo(tmp._a, tmp._b);
-	tmp._bc = distTo(tmp._b, tmp._c);
-	tmp._cd = distTo(tmp._c, tmp._d);
-	tmp._de = distTo(tmp._d, tmp._e);
-	tmp._ae = distTo(tmp._a, tmp._e);
-	tmp._acDiagonal = distTo(tmp._a, tmp._c);
-	tmp._PentOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae, tmp._acDiagonal);
-	if (tmp._PentOrNot) {
-		cout << "\nPentagon created";
-		tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae);
-		cout << "\nP = " << tmp._P;
-		tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae, tmp._acDiagonal);
-		cout << "\nS = " << tmp._S;
-		check(tmp._ab, tmp._bc, tmp._cd, tmp._de, tmp._ae);
+	create_point(_a);
+	create_point(_b);
+	create_point(_c);
+	create_point(_d);
+	create_point(_e);
+	
+	_PentOrNot = pointsOnOneLine(_a, _b, _c);
+	if (_PentOrNot) {
+		_PentOrNot = pointsOnOneLine(_b, _c, _d);
 	}
-	return tmp;
+	if (_PentOrNot) {
+		_PentOrNot = pointsOnOneLine(_c, _d, _e);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = pointsOnOneLine(_d, _e, _a);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = pointsOnOneLine(_e, _a, _b);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = checkOnIntersections(_a, _b, _c, _d);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = checkOnIntersections(_a, _b, _d, _e);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = checkOnIntersections(_b, _c, _a, _e);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = checkOnIntersections(_b, _c, _d, _e);
+	}
+	if (_PentOrNot) {
+		_PentOrNot = checkOnIntersections(_c, _d, _a, _e);
+	}
+	if (_PentOrNot) {
+		_ab = distTo(_a, _b);
+		_bc = distTo(_b, _c);
+		_cd = distTo(_c, _d);
+		_de = distTo(_d, _e);
+		_ae = distTo(_a, _e);
+		cout << "\nPentagon created";
+		_P = perimetr(_ab, _bc, _cd, _de, _ae);
+		cout << "\nP = " << _P;
+		_S = area(_a, _b, _c, _d, _e);
+		cout << "\nS = " << _S;
+		check(_ab, _bc, _cd, _de, _ae);
+	}
+	else {
+		cout << "\nThis is not pentagon";
+	}
+	return *this;
 }
 
 bool pentagon::Get_existence()

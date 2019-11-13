@@ -4,6 +4,7 @@
 
 using std::cin;
 using std::cout;
+using std::swap;
 
 /**
 Calculates the perimetr of triangle.
@@ -12,7 +13,7 @@ Calculates the perimetr of triangle.
 */
 double Base::perimetr(double distAB, double distAC, double distBC)
 {
-	double perimetr_tr = distAB + distAC + distBC;
+	float perimetr_tr = distAB + distAC + distBC;
 	return perimetr_tr;
 }
 /**
@@ -57,59 +58,23 @@ double Base::area(double distAB, double distBC, double distCD, double distAD)
 	double area_tetr = sqrt((half_perimetr_tetr - distAB) * (half_perimetr_tetr - distBC) * (half_perimetr_tetr - distCD) * (half_perimetr_tetr - distAD));
 	return area_tetr;
 }
-
-double Base::area(double distAB, double distBC, double distCD, double distDE, double distAE, double distD)
+//2S = x1(y2-y5) + x2(y3-y1) + x3(y4-y2) + x4(y5-y3) + x5(y1-y4)
+double Base::area(point a, point b, point c, point d, point e)
 {
-	double area_pent, area_tr, area_tetr;
-	area_tr = area(distAB, distBC, distD);
-	area_tetr = area(distCD, distDE, distAE, distD);
-	return area_pent = area_tr + area_tetr;
-}
-/**
-Checks the triangle existence.
-
-@details Triangle existence: Every side must be smaller then sum of other sides.
-*/
-bool Base::FigureOrNot(double distAB, double distAC, double distBC)
-{
-	if ((distAB + distBC > distAC) && (distAB + distAC > distBC) && (distBC + distAC > distAB)) { 
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-/**
-Checks the tetragon existence.
-
-@details Tetragon existence: Every side must be bigger than sum of other sides.
-*/
-bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distAD)
-{
-	if ((distAB < distBC + distCD + distAD) && (distBC < distAB + distCD + distAD) && (distCD < distAB + distBC + distAD) && (distAD < distAB + distBC + distCD)) { 
-		return true;
-	}
-	else {
-		return false;
-	}
+	double area_pent = (a.x * (b.y - e.y) + b.x * (c.y - a.y) + c.x * (d.y - b.y) + d.x * (e.y - c.y) + e.x * (a.y - d.y)) / 2;
+	return area_pent;
 }
 
-bool Base::FigureOrNot(double distAB, double distBC, double distCD, double distDE, double distAE, double distD)
-{
-	bool TetrOrNot, TrOrNot = false;
-	TrOrNot = FigureOrNot(distAB, distBC, distD); //Check the triangle existence.
-	TetrOrNot = FigureOrNot(distCD, distDE, distAE, distD); //Check the tetragon existence.
-	if ((TrOrNot) && (TetrOrNot)) { //if triangle and pentagon exists - return true.
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-bool Base::checkOnIntersections(point & lineApoint1, point & lineApoint2, point & lineBpoint1, point & lineBpoint2)
+bool Base::checkOnIntersections(point lineApoint1, point lineApoint2, point lineBpoint1, point lineBpoint2)
 {
 	double lineAñoefficient, lineBcoefficient, lineAfreeMember, lineBfreeMember, intersectionY1, intersectionY2;
 	point intersectionPoint;
+	if (lineApoint1.x >= lineApoint2.x) {
+		swap(lineApoint1, lineApoint2);
+	}
+	if (lineBpoint1.x >= lineBpoint2.x) {
+		swap(lineBpoint1, lineBpoint2);
+	}
 	if (lineApoint2.y == lineApoint1.y) {
 		lineAñoefficient = 0;
 	}
@@ -123,7 +88,7 @@ bool Base::checkOnIntersections(point & lineApoint1, point & lineApoint2, point 
 		lineBcoefficient = ((lineBpoint2.y - lineBpoint1.y) / (lineBpoint2.x - lineBpoint1.x));
 	}
 	if (lineAñoefficient == lineBcoefficient) {
-		return false;
+		return true;
 	}
 	else {
 		lineAfreeMember = lineApoint1.y - (lineAñoefficient * lineApoint1.x);
@@ -131,14 +96,25 @@ bool Base::checkOnIntersections(point & lineApoint1, point & lineApoint2, point 
 		intersectionPoint.x = (lineBfreeMember - lineAfreeMember) / (lineAñoefficient - lineBcoefficient);
 		intersectionY1 = (lineAñoefficient * intersectionPoint.x) + lineAfreeMember;
 		intersectionY2 = (lineBcoefficient * intersectionPoint.x) + lineBfreeMember;
-		if (((intersectionY1 == intersectionY2) && (lineApoint1.x <= lineBpoint2.x) && (lineBpoint2.x <= lineApoint2.x)) || (intersectionY1 == intersectionY2) && (lineApoint1.x <= lineBpoint1.x) && (lineBpoint1.x <= lineApoint2.x)) {
+		if ((intersectionY1 <= intersectionY2 + 0.0000001) && (intersectionY1 >= intersectionY2 - 0.0000001) && (lineApoint1.x <= intersectionPoint.x) && (intersectionPoint.x <= lineApoint2.x) && (lineBpoint1.x <= intersectionPoint.x) && (intersectionPoint.x <= lineBpoint2.x)) {
 			intersectionPoint.y = intersectionY1;
 			cout << "\nThis is figure with intersections\nIntersection point: (" << intersectionPoint.x << "," << intersectionPoint.y << ")\n";
-			return true;
-		}
-		else {
 			return false;
 		}
+		else {
+			return true;
+		}
+	}
+}
+bool Base::pointsOnOneLine(point a, point b, point c)
+{
+	double result;
+	result = (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x);
+	if (result == 0) {
+		return false;
+	}
+	else {
+		return true;
 	}
 }
 /**

@@ -50,58 +50,44 @@ tetragon tetragon::operator=(tetragon tetr)
 
 tetragon tetragon::Set_tetragon()
 {
-	tetragon tmp;
-	bool intersection, swapcoopdinates1 = false, swapcoordinates2 = false;
-	create_point(tmp._a);
-	create_point(tmp._b);
-	create_point(tmp._c);
-	create_point(tmp._d);
+	bool swapcoordinates1 = false, swapcoordinates2 = false;
+	create_point(_a);
+	create_point(_b);
+	create_point(_c);
+	create_point(_d);
 
-	if (tmp._a.x >= tmp._b.x) {
-		swapcoopdinates1 = true;
-		swap(tmp._a.x, tmp._b.x);
-		swap(tmp._a.y, tmp._b.y);
+	_TetrOrNot = pointsOnOneLine(_a, _b, _c);
+	if (_TetrOrNot) {
+		_TetrOrNot = pointsOnOneLine(_b, _c, _d);
 	}
-	if (tmp._c.x >= tmp._d.x) {
-		swapcoordinates2 = true;
-		swap(tmp._c.x, tmp._d.x);
-		swap(tmp._c.y, tmp._d.y);
+	if (_TetrOrNot) {
+		_TetrOrNot = pointsOnOneLine(_c, _d, _a);
 	}
-
-	intersection = checkOnIntersections(tmp._a, tmp._b, tmp._c, tmp._d);
-
-	if (swapcoopdinates1) {
-		swap(tmp._a.x, tmp._b.x);
-		swap(tmp._a.y, tmp._b.y);
+	if (_TetrOrNot) {
+		_TetrOrNot = pointsOnOneLine(_d, _a, _b);
 	}
-	if (swapcoordinates2) {
-		swap(tmp._c.x, tmp._d.x);
-		swap(tmp._c.y, tmp._d.y);
+	if (_TetrOrNot) {
+		_TetrOrNot = checkOnIntersections(_a, _b, _c, _d);
 	}
-
-
-	if (!intersection) {
-		tmp._ab = distTo(tmp._a, tmp._b);
-		tmp._bc = distTo(tmp._b, tmp._c);
-		tmp._cd = distTo(tmp._c, tmp._d);
-		tmp._ad = distTo(tmp._a, tmp._d);
-		tmp._TetrOrNot = FigureOrNot(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-		if (tmp._TetrOrNot) {
-			cout << "\nTetragon created";
-			tmp._P = perimetr(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-			cout << "\nP = " << tmp._P;
-			tmp._S = area(tmp._ab, tmp._bc, tmp._cd, tmp._ad);
-			cout << "\nS = " << tmp._S;
-			check(tmp._ab, tmp._bc, tmp._cd, tmp._ad, tmp._S);
-		}
-		else {
-			cout << "\nThis is not Tetragon";
-		}
+	if (_TetrOrNot) {
+		_TetrOrNot = checkOnIntersections(_a, _d, _b, _c);
+	}
+	if (_TetrOrNot) {
+		_ab = distTo(_a, _b);
+		_bc = distTo(_b, _c);
+		_cd = distTo(_c, _d);
+		_ad = distTo(_a, _d);
+		cout << "\nTetragon created";
+		_P = perimetr(_ab, _bc, _cd, _ad);
+		cout << "\nP = " << _P;
+		_S = area(_ab, _bc, _cd, _ad);
+		cout << "\nS = " << _S;
+		check(_ab, _bc, _cd, _ad, _S);
 	}
 	else {
-		tmp._TetrOrNot = false;
+		cout << "\nThis is not Tetragon";
 	}
-	return tmp;
+	return *this;
 }
 
 bool tetragon::Get_existence()
