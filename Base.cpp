@@ -62,7 +62,12 @@ double Base::area(double distAB, double distBC, double distCD, double distAD)
 double Base::area(point a, point b, point c, point d, point e)
 {
 	double area_pent = (a.x * (b.y - e.y) + b.x * (c.y - a.y) + c.x * (d.y - b.y) + d.x * (e.y - c.y) + e.x * (a.y - d.y)) / 2;
-	return area_pent;
+	if (area_pent < 0) {
+		return area_pent * -1;
+	}
+	else {
+		return area_pent;
+	}
 }
 
 bool Base::checkOnIntersections(point lineApoint1, point lineApoint2, point lineBpoint1, point lineBpoint2)

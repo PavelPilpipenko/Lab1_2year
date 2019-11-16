@@ -187,7 +187,7 @@ void list_realisation::deletelist()
 	list_node * tmp = head;
 
 	while (current) {
-		current = tmp;
+		tmp = current;
 		current = current->next;
 		delete tmp;
 	}
