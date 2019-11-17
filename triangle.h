@@ -32,10 +32,19 @@ public:
 	/**
 	Creates triangle after input the coordinates of points.
 	
-	@return tmp Created triangle.
+	@return *this Created triangle.
 	*/
 	triangle Set_triangle();
+	/**
+	Returns the existence of triangle.
+	
+	@return true if triangle exist. false if triangle dont exist.
+	*/
 	bool Get_existence() override;
+	/**
+	Prints the triangle information.
+	\ Area, perimetr and type of triangle.
+	*/
 	void print() override;
 
 	triangle();

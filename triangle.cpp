@@ -4,21 +4,41 @@
 
 
 using std::cout;
+/**
+Checks the triangle. Equilateral, isosceles, right triangles.
 
+@details Checking:
+\AB, AC, BC - sides of triangle.
+\S - area of triangle.
+\
+\if AB = AC and AC = BC then triangle is equilateral.
+\if AB = AC or AC = BC or BC = AB then triangle is isosceles.
+\if AB * AC * 0.5 = S or AC * BC * 0.5 = S or AB * BC * 0.5 = S then triangle is right.
+*/
 void triangle::check(double distAB, double distAC, double distBC, double area)
 {
+		//equilateral.
 	if ((distAB == distAC) && (distAC == distBC)) {
 		cout << "\nequilateral triangle"; //равносторонний треугольник
 		return;
 	}
+		//isosceles.
 	else if ((distAB == distAC) || (distAC == distBC) || (distBC == distAB)) {
 		cout << "\nisosceles triangle"; // равнобедренный треугольник
 	}
+		//right.
 	if ((distAB*distAC * 0.5 == area) || (distAC*distBC*0.5 == area) || (distAB*distBC*0.5 == area)) {
 		cout << "\nright triangle"; //прямоугольный треугольник
 	}
 }
+/**
+Overloaded assignment operator.
 
+@details Assignment:
+\all values of triangle tr assign to this triangle
+\(sides, perimetr, area, existence, type).
+@return *this Modified triangle.
+*/
 triangle triangle::operator=(triangle tr)
 {
 	_a = tr._a;
@@ -32,16 +52,32 @@ triangle triangle::operator=(triangle tr)
 	_P = tr._P;
 	return *this;
 }
+/**
+Creates triangle after input the coordinates of points.
 
+@details Creating:
+\\Step 1:
+\Creating points(a, b, c)
+\\Step 2:
+\Checks on existence: points a, b, c must be not on one line.
+\\Step 3:
+\Calculating and returning:
+\(sides, perimetr, area and type).
+@return *this Created triangle.
+*/
 triangle triangle::Set_triangle()
 {
+		//Step 1
 	create_point(_a);
 	create_point(_b);
 	create_point(_c);
-
+	
+		//Step 2
 	_TrOrNot = pointsOnOneLine(_a, _b, _c);
 
+		//if triangle exists then continue.
 	if (_TrOrNot) {
+			//Step 3
 		_ab = distTo(_a, _b);
 		_bc = distTo(_b, _c);
 		_ac = distTo(_a, _c);
@@ -57,20 +93,26 @@ triangle triangle::Set_triangle()
 	}
 	return *this;
 }
+/**
+Returns the existence of triangle.
 
+@return _TrOrNot True if triangle exist. false if triangle dont exist.
+*/
 bool triangle::Get_existence()
 {
 	return _TrOrNot;
 }
-
+/**
+Prints the triangle information.
+\ Area, perimetr and type of triangle.
+*/
 void triangle::print()
 {
 	cout << "\nTriangle:" << "\nP = " << _P;
 	cout << "\nS = " << _S;
 }
 
-
-triangle::triangle()
+triangle::triangle() //assign to all values of triangle 0.
 {
 	_a.x = _a.y = 0;
 	_b = _a;
