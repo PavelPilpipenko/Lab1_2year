@@ -15,28 +15,39 @@ Checks the triangle. Equilateral, isosceles, right triangles.
 \if AB = AC or AC = BC or BC = AB then triangle is isosceles.
 \if AB * AC * 0.5 = S or AC * BC * 0.5 = S or AB * BC * 0.5 = S then triangle is right.
 */
-void triangle::check(double distAB, double distAC, double distBC, double area)
+void triangle::check(double distAB, double distAC, double distBC, double area, trType &type)
 {
 		//equilateral.
 	if ((distAB == distAC) && (distAC == distBC)) {
-		cout << "\nequilateral triangle"; //равносторонний треугольник
+		type = equilateral;
 		return;
 	}
 		//isosceles.
 	else if ((distAB == distAC) || (distAC == distBC) || (distBC == distAB)) {
-		cout << "\nisosceles triangle"; // равнобедренный треугольник
+		type = isosceles;
 	}
 		//right.
 	if ((distAB*distAC * 0.5 == area) || (distAC*distBC*0.5 == area) || (distAB*distBC*0.5 == area)) {
-		cout << "\nright triangle"; //прямоугольный треугольник
+		type = right;
 	}
+		//print type.
+	if (type == 1) {
+		cout << "\nequilateral triangle.";
+	}
+	else if (type == 2) {
+		cout << "\nisosceles triangle";
+	}
+	else if (type == 3) {
+		cout << "\nright triangle.";
+	}
+	
 }
 /**
 Overloaded assignment operator.
 
 @details Assignment:
 \all values of triangle tr assign to this triangle
-\(sides, perimetr, area, existence, type).
+\(points, sides, perimetr, area, existence, type).
 @return *this Modified triangle.
 */
 triangle triangle::operator=(triangle tr)
@@ -48,6 +59,7 @@ triangle triangle::operator=(triangle tr)
 	_ac = tr._ac;
 	_bc = tr._bc;
 	_TrOrNot = tr._TrOrNot;
+	_trType = tr._trType;
 	_S = tr._S;
 	_P = tr._P;
 	return *this;
@@ -86,7 +98,7 @@ triangle triangle::Set_triangle()
 		cout << "\nP = " << _P;
 		_S = area(_ab, _ac, _bc);
 		cout << "\nS = " << _S;
-		check(_ab, _ac, _bc, _S);
+		check(_ab, _ac, _bc, _S, _trType);
 	}
 	else {
 		cout << "\nThis is not triangle";
@@ -110,6 +122,19 @@ void triangle::print()
 {
 	cout << "\nTriangle:" << "\nP = " << _P;
 	cout << "\nS = " << _S;
+	cout << "\nType: ";
+	if (_trType == 1) {
+		cout << "equilateral.";
+	}
+	else if (_trType == 2) {
+		cout << "isosceles.";
+	}
+	else if (_trType == 3) {
+		cout << "right.";
+	}
+	else if (_trType == 0) {
+		cout << "standard.";
+	}
 }
 
 triangle::triangle() //assign to all values of triangle 0.
@@ -118,6 +143,7 @@ triangle::triangle() //assign to all values of triangle 0.
 	_b = _a;
 	_c = _a;
 	_ab = _ac = _bc = _S = _P = 0;
+	_trType = standard;
 }
 
 triangle::~triangle()

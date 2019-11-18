@@ -14,7 +14,7 @@ Calculates the perimetr of triangle.
 */
 double Base::perimetr(double distAB, double distAC, double distBC)
 {
-	float perimetr_tr = distAB + distAC + distBC;
+	double perimetr_tr = distAB + distAC + distBC;
 	return perimetr_tr;
 }
 /**

@@ -3,24 +3,25 @@
 #include"cmath"
 #include"Base.h"
 
-
 using std::cout;
 
+enum trType {standard, equilateral, isosceles, right};
 class triangle : public Base
 {
 private:
 	point _a, _b, _c;//points of triangle
 	double _ab, _ac, _bc, _P, _S;//sides, perimetr and area of triangle.
 	bool _TrOrNot;//triangle existence
+	trType _trType;
 	/**
-	Checks the triangle. Equilateral, isosceles, right triangles.
+	Checks triangle on type. Equilateral, isosceles, right triangle.
 	
 	@param distAB Dist from point A to point B.
 	@param distAC Dist from point A to point C.
 	@param distBC Dist from point B to point C.
 	@param area Area of triangle.
 	*/
-	void check(double distAB, double distAC, double distBC, double area);
+	void check(double distAB, double distAC, double distBC, double area, trType &type);
 public:
 	/**
 	Overloaded assignment operator.
