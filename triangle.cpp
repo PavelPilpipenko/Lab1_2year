@@ -5,7 +5,7 @@
 
 using std::cout;
 /**
-Checks the triangle. Equilateral, isosceles, right triangles.
+Checks the triangle. Equilateral, isosceles, right triangle.
 
 @details Checking:
 \AB, AC, BC - sides of triangle.
@@ -132,7 +132,7 @@ void triangle::print()
 	else if (_trType == 3) {
 		cout << "right.";
 	}
-	else if (_trType == 0) {
+	else {
 		cout << "standard.";
 	}
 }
@@ -143,7 +143,7 @@ triangle::triangle() //assign to all values of triangle 0.
 	_b = _a;
 	_c = _a;
 	_ab = _ac = _bc = _S = _P = 0;
-	_trType = standard;
+	_trType = not_setted_triangle;
 }
 
 triangle::~triangle()

@@ -23,34 +23,48 @@ Checks tetragon on type. Parallelogram, rectangle, square, rhombus, trapezoid.
 \if tetragon isnt rectangle and AB = BC and CD = AD and d1 != d2 then tetragon is rhombus.
 \if d1 = (CD^2 + AD*BC - ((AD * CD^2 - AB^2)/(AD - BC))^1/2 or d1 = (BC^2 + AB*CD - (AB*BC^2 - AD^2) / (AB - CD))^1/2 then tetragon is trapezoid.
 */
-void tetragon::check(double distAB, double distBC, double distCD, double distAD, double area)
+void tetragon::check(double distAB, double distBC, double distCD, double distAD, double area, tetrType &type)
 {
-	bool rectangle = false;
 	double d_main, d_side;
 	d_main = distTo(_a, _c);
 	d_side = distTo(_b, _d);
 		//parallelogram.
 	if ((distAB == distCD) && (distBC == distAD)) {
-		cout << "\nThis is parallelogram";
+		type = parallelogram;
 			//rectangle.
 		if ((area == distAB * distBC) && (d_main == d_side)) {
-			cout << "\n...\nThis is rectangle";
-			rectangle = true;
+			type = rectangle;
 				//square.
 			if (area == distAB * distAB) {
-				cout << "\n...\nThis is square";
+				type = square;
 			}
 		}
 			//rhombus.
-		if (!rectangle) {
+		if (type != rectangle) {
 			if ((distAB == distBC) && (distCD == distAD) && (d_main != d_side)) {
-				cout << "\n...\nThis is rhombus";
+				type = rhombus;
 			}
 		}
 	}
 		//trapezoid.
 	else if ((d_main == sqrt(pow(distCD,2) + distAD*distBC - ((distAD*(pow(distCD,2) - pow(distAB,2)))/(distAD - distBC)))) || (d_main == sqrt(pow(distBC, 2) + distAB * distCD - ((distAB*(pow(distBC, 2) - pow(distAD, 2))) / (distAB - distCD))))) {
-		cout << "\nThis is trapezoid";
+		type = trapezoid;
+	}
+		//print type
+	if (type == 1) {
+		cout << "\nparallelogram";
+	}
+	else if (type == 2) {
+		cout << "\nrectangle";
+	}
+	else if (type == 3) {
+		cout << "\nsquare";
+	}
+	else if (type == 4) {
+		cout << "\nrhombus";
+	}
+	else if (type == 5) {
+		cout << "\ntrapezoid";
 	}
 }
 /**
@@ -72,6 +86,7 @@ tetragon tetragon::operator=(tetragon tetr)
 	_cd = tetr._cd;
 	_ad = tetr._ad;
 	_TetrOrNot = tetr._TetrOrNot;
+	_tetrType = tetr._tetrType;
 	_P = tetr._P;
 	_S = tetr._S;
 	return *this;
@@ -84,7 +99,7 @@ Creates tetragon after input the coordinates of points.
 \Creating points(a, b, c, d)
 \\Step 2:
 \Checks on existence: 
-\Each three neighbour point (a, b, c),(b, c, d),(c, d, a),(d, a, b) must be not on one line.
+\Each three neighbour points (a, b, c),(b, c, d),(c, d, a),(d, a, b) must be not on one line.
 \Oppisite lines (AB, CD), (AC, BD) must not have an intersection points.
 \\Step 3:
 \Calculating and returning:
@@ -129,7 +144,7 @@ tetragon tetragon::Set_tetragon()
 		cout << "\nP = " << _P;
 		_S = area(_ab, _bc, _cd, _ad);
 		cout << "\nS = " << _S;
-		check(_ab, _bc, _cd, _ad, _S);
+		check(_ab, _bc, _cd, _ad, _S, _tetrType);
 	}
 	else {
 		cout << "\nThis is not Tetragon";
@@ -153,6 +168,25 @@ void tetragon::print()
 {
 	cout << "\nTetragon:" << "\nP = " << _P;
 	cout << "\nS = " << _S;
+	cout << "\nType: ";
+	if (_tetrType == 1) {
+		cout << "parallelogram.";
+	}
+	else if (_tetrType == 2) {
+		cout << "rectangle.";
+	}
+	else if (_tetrType == 3) {
+		cout << "square.";
+	}
+	else if (_tetrType == 4) {
+		cout << "rhombus.";
+	}
+	else if (_tetrType == 5) {
+		cout << "trapezoid.";
+	}
+	else {
+		cout << "standard.";
+	}
 }
 
 tetragon::tetragon() //assign to all values of tetragon 0.
@@ -162,6 +196,7 @@ tetragon::tetragon() //assign to all values of tetragon 0.
 	_c = _a;
 	_d = _a;
 	_ab = _bc = _cd = _ad = _S = _P = 0;
+	_tetrType = not_setted_tetragon;
 }
 
 

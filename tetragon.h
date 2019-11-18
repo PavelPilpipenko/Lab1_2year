@@ -2,12 +2,14 @@
 #include"cmath"
 #include"Base.h"
 
+enum tetrType {not_setted_tetragon, parallelogram, rectangle, square, rhombus, trapezoid};
 class tetragon : public Base
 {
 private:
 	point _a, _b, _c, _d;//points of tetragon.
 	double _ab, _bc, _cd, _ad, _S, _P;//sides, area and perimetr.
 	bool _TetrOrNot;//tetragon existence.
+	tetrType _tetrType;//type of tetragon.
 	/**
 	Checks tetragon on type. Parallelogram, rectangle, square, rhombus, trapezoid.
 	
@@ -16,8 +18,9 @@ private:
 	@param distCD Dist from point C to point D.
 	@param distAD Dist from point A to point D.
 	@param area Area of tetragon.
+	@param type Type of tetragon.
 	*/
-	void check(double distAB, double distBC, double distCD, double distAD, double area);
+	void check(double distAB, double distBC, double distCD, double distAD, double area, tetrType &type);
 public:
 	/**
 	Overloaded assignment operator.
