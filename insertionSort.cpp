@@ -112,7 +112,7 @@ void insertionSort::insertionSortArea(list_node ** listhead)
 		current = next;
 	}
 
-	// Update head_ref to point to sorted linked list 
+	// Update listhead to point to sorted linked list 
 	*listhead = sorted;
 }
 
@@ -136,7 +136,7 @@ void insertionSort::insertionSortPerimetr(list_node ** listhead)
 		current = next;
 	}
 
-	// Update head_ref to point to sorted linked list 
+	// Update listhead to point to sorted linked list 
 	*listhead = sorted;
 }
 
