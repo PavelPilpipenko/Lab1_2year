@@ -152,8 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Base.h" />
+    <ClInclude Include="insertionSort.h" />
     <ClInclude Include="list_node.h" />
     <ClInclude Include="list_realisation.h" />
+    <ClInclude Include="mergeSort.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="pentagon.h" />
     <ClInclude Include="point.h" />
@@ -162,9 +164,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base.cpp" />
+    <ClCompile Include="insertionSort.cpp" />
     <ClCompile Include="Lab1_2year.cpp" />
     <ClCompile Include="list_node.cpp" />
     <ClCompile Include="list_realisation.cpp" />
+    <ClCompile Include="mergeSort.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

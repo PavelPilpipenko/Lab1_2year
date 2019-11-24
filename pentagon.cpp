@@ -151,6 +151,16 @@ void pentagon::print()
 	}
 }
 
+double pentagon::Get_area()
+{
+	return _S;
+}
+
+double pentagon::Get_perimetr()
+{
+	return _P;
+}
+
 pentagon::pentagon()//assign to all values of pentagon 0.
 {
 	_a.x = _a.y = 0;

@@ -137,6 +137,16 @@ void triangle::print()
 	}
 }
 
+double triangle::Get_area()
+{
+	return _S;
+}
+
+double triangle::Get_perimetr()
+{
+	return _P;
+}
+
 triangle::triangle() //assign to all values of triangle 0.
 {
 	_a.x = _a.y = 0;

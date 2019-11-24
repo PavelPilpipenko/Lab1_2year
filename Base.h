@@ -134,6 +134,8 @@ public:
 	#Virtual function.
 	*/
 	virtual bool Get_existence() = 0;
+	virtual double Get_area() = 0;
+	virtual double Get_perimetr() = 0;
 	Base();
 	~Base();
 };

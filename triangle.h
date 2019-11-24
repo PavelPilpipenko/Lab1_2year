@@ -38,7 +38,7 @@ public:
 	/**
 	Returns the existence of triangle.
 	
-	@return true if triangle exist. false if triangle dont exist.
+	@return true if triangle exist. false if triangle isnt exists.
 	*/
 	bool Get_existence() override;
 	/**
@@ -46,6 +46,8 @@ public:
 	\ Area, perimetr and type of triangle.
 	*/
 	void print() override;
+	double Get_area() override;
+	double Get_perimetr() override;
 
 	triangle();
 	~triangle();

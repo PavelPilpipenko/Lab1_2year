@@ -15,6 +15,8 @@ public:
 	triangle tr_info;
 	tetragon tetr_info;
 	pentagon pent_info;
+	double P;
+	double S;
 
 	type Set_type(type name);
 	type Get_type();

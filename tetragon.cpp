@@ -189,6 +189,16 @@ void tetragon::print()
 	}
 }
 
+double tetragon::Get_area()
+{
+	return _S;
+}
+
+double tetragon::Get_perimetr()
+{
+	return _P;
+}
+
 tetragon::tetragon() //assign to all values of tetragon 0.
 {
 	_a.x = _a.y = 0;

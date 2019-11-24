@@ -38,7 +38,7 @@ public:
 	/**
 	Returns the existence of pentagon.
 	
-	@return true if pentagon exists. false if pentagon not exists.
+	@return true if pentagon exists. false if pentagon isnt exists.
 	*/
 	bool Get_existence() override;
 	/**
@@ -46,6 +46,8 @@ public:
 	\area, perimetr and type.
 	*/
 	void print() override;
+	double Get_area() override;
+	double Get_perimetr() override;
 	pentagon();
 	~pentagon();
 };

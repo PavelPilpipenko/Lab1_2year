@@ -46,6 +46,8 @@ public:
 	\area, perimetr and type.
 	*/
 	void print() override;
+	double Get_area() override;
+	double Get_perimetr() override;
 
 	tetragon();
 	~tetragon();

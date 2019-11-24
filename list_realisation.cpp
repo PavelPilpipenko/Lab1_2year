@@ -31,6 +31,8 @@ void list_realisation::addElTriangle()
 	temp->tr_info = temp->tr_info.Set_triangle();
 	bool trOrNot = temp->tr_info.Get_existence();
 	if (trOrNot) {
+		temp->P = temp->tr_info.Get_perimetr();
+		temp->S = temp->tr_info.Get_area();
 		if (head == nullptr) {
 			head = temp;
 			tail = temp;
@@ -50,6 +52,8 @@ void list_realisation::addElTetragon()
 	temp->tetr_info = temp->tetr_info.Set_tetragon();
 	bool tetrOrNot = temp->tetr_info.Get_existence();
 	if (tetrOrNot) {
+		temp->P = temp->tetr_info.Get_perimetr();
+		temp->S = temp->tetr_info.Get_area();
 		if (head == nullptr) {
 			head = temp;
 			tail = temp;
@@ -69,6 +73,8 @@ void list_realisation::addElPentagon()
 	temp->pent_info = temp->pent_info.Set_pentagon();
 	bool pentOrNot = temp->pent_info.Get_existence();
 	if (pentOrNot) {
+		temp->P = temp->pent_info.Get_perimetr();
+		temp->S = temp->pent_info.Get_area();
 		if (head == nullptr) {
 			head = temp;
 			tail = temp;
@@ -247,6 +253,65 @@ void list_realisation::searchToDelete()
 	else {
 		cout << "\n\t Invalid number";
 	}	
+}
+
+void list_realisation::insertionSort(int input)
+{
+	list_node * temp;
+	switch (input)
+	{
+	case 1:
+		insertionSortArea(&head);
+		temp = head;
+		while (temp != nullptr) {
+			if (temp->next == nullptr) {
+				tail = temp;
+			}
+			temp = temp->next;
+		};
+		break;
+	default:
+		break;
+	}
+}
+
+void list_realisation::mergeSort(int input)
+{
+	list_node *temp;
+	switch (input) {
+	case 1:
+		MergeSortArea(&head);
+		temp = head;
+		while (temp != nullptr) {
+			if (temp->next == nullptr) {
+				tail = temp;
+			}
+			temp = temp->next;
+		}
+		break;
+	case 2:
+		MergeSortPerimetr(&head);
+		temp = head;
+		while (temp != nullptr) {
+			if (temp->next == nullptr) {
+				tail = temp;
+			}
+			temp = temp->next;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+list_node* list_realisation::Get_head()
+{
+	return head;
+}
+
+list_node * list_realisation::Get_tail()
+{
+	return tail;
 }
 
 

@@ -1,9 +1,10 @@
 #pragma once
 #include"list_node.h"
 #include"Base.h"
+#include "insertionSort.h"
+#include "mergeSort.h"
 
-
-class list_realisation
+class list_realisation : private insertionSort, mergeSort
 {
 private:
 	list_node *head;
@@ -20,5 +21,9 @@ public:
 	void deletelist();
 	void printList();
 	void searchToDelete();
+	void insertionSort(int input);
+	void mergeSort(int input);
+	list_node* Get_head();
+	list_node* Get_tail();
 };
 

@@ -22,6 +22,7 @@ list_node::list_node()
 	next = nullptr;
 	prev = nullptr;
 	_type_name = not_setted;
+	P = S = 0;
 }
 
 list_node::~list_node()
